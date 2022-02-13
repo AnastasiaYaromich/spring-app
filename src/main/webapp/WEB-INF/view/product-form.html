@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add new author</title>
+</head>
+
+<body>
+<form th:action="@{'processForm'}" th:object="${product}" method="post">
+    id: <input type="text" th:field="*{id}"/>
+    <br>
+    title: <input type="text" th:field="*{title}"/>
+    <br>
+    cost: <input type="text" th:field="*{cost}"/>
+    <br>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
