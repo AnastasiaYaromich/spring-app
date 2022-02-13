@@ -6,12 +6,12 @@
 </head>
 
 <body>
-<form th:action="@{'/authors/form'}" th:object="${author}" method="post">
-    First Name: <input type="text" th:field="*{firstName}"/>
+<form th:action="@{'processForm'}" th:object="${product}" method="post">
+    id: <input type="text" th:field="*{id}"/>
     <br>
-    Last Name: <input type="text" th:field="*{lastName}"/>
+    title: <input type="text" th:field="*{title}"/>
     <br>
-    e-mail: <input type="text" th:field="*{email}"/>
+    cost: <input type="text" th:field="*{cost}"/>
     <br>
     <button type="submit">Save</button>
 </form>

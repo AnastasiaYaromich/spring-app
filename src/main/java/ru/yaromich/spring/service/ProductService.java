@@ -22,4 +22,8 @@ public class ProductService {
     public Product showById(Long id) {
         return productRepository.findProductById(id);
     }
+
+    public void setProductList(List<Product> products) {
+        productRepository.setProductList(products);
+    }
 }

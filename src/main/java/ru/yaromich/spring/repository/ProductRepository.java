@@ -21,6 +21,9 @@ public class ProductRepository {
         add(new Product(10, "Carny", "10$"));
     }};
 
+    public void setProductList(List<Product> productList) {
+        products = productList;
+    }
 
     // Выдать список всех товаров.
     public List<Product> productList () {

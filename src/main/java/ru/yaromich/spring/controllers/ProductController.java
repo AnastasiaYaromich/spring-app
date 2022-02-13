@@ -9,7 +9,6 @@ import ru.yaromich.spring.service.ProductService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/onlineStorage")
 public class ProductController {
     private ProductService productService;
 
@@ -33,15 +32,18 @@ public class ProductController {
     }
 
     @RequestMapping("/showForm")
-        public String getForm(Model model) {
-            Product product = new Product();
-            model.addAttribute("product", product);
-            return "feedAdd";
-        }
+    public String showSimpleForm(Model uiModel) {
+        Product product = new Product();
+        uiModel.addAttribute("product", product);
+        return "product-form";
+    }
 
-        @RequestMapping(params = "form", method = RequestMethod.POST)
-    public String create(Product product) {
-    //    productService.addProduct(product);
-        return "feedAdd";
+    @RequestMapping("/processForm")
+    public String processForm(@ModelAttribute("product") Product product, Model model) {
+        List<Product> productList = productService.showAll();
+        productList.add(product);
+        productService.setProductList(productList);
+        model.addAttribute("productList", productList);
+        return "feedPage";
     }
 }
