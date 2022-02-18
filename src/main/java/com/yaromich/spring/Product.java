@@ -1,5 +1,4 @@
 package com.yaromich.spring;
-
 import javax.persistence.*;
 
 @Entity
