@@ -1,28 +1,31 @@
 package com.yaromich.spring.services;
 
-import com.yaromich.spring.entities.Product;
-import com.yaromich.spring.repositories.ProductRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
+
 import java.util.List;
-//import java.util.Optional;
 
 
-//@Service
+import com.yaromich.spring.entities.Product;
+import com.yaromich.spring.repositories.ProductDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ProductService {
-    private ProductRepository productRepository;
+    private ProductDao productDao;
 
-//    @Autowired
-//    public void setProductRepository(ProductRepository productRepository) {
-//        this.productRepository = productRepository;
-//    }
+    @Autowired
+    public void setProductDao(ProductDao productDao) {
+        this.productDao = productDao;
+    }
 
-//
-//    public List<Product> getAllProducts() {
-//        List<Product> products = (List<Product>) productRepository.findAll();
-//        return products;
-//    }
-//
+
+    public List<Product> getAllProducts() {
+        List<Product> products = (List<Product>) productDao.getAllProducts();
+        return products;
+    }
+
 //    public List<Product> getProductsByVendorCode(String code) {
 //        return productRepository.findAllByVendorCode(code);
 //    }

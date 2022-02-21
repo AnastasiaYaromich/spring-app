@@ -1,11 +1,17 @@
-package com.yaromich.spring.entities;
+package com.yaromich.spring.repositories;
 
+import com.yaromich.spring.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
+@Repository
 public class ProductDao {
     private SessionFactory sessionFactory;
 
@@ -64,7 +70,6 @@ public class ProductDao {
         sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Product.class)
-                .addAnnotatedClass(Category.class)
                 .buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         return session;
