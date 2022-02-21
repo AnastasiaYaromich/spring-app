@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Welcome to our online store! We sell animal feed.</h1>
+<h2>List of products of the online store:</h2>
+<p th:each="product : ${products}" th:text="${product.toString()}" />
+</body>
+</html>
