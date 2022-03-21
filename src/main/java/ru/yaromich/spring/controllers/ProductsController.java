@@ -2,6 +2,7 @@ package ru.yaromich.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -38,10 +39,15 @@ public class ProductsController {
     public void setProducersService(ProducersService producersService) { this.producersService = producersService; }
 
     @GetMapping()
-    public String productsList(Model model) {
-          List<Product> allProducts = productsService.getAllProductsList();
-          model.addAttribute("products", allProducts);
-        return "index";
+    public String productsList(Model model, @RequestParam(value = "pageNum", defaultValue = "0") int pageNum,
+                               @RequestParam(value = "pageSize", defaultValue = "8") int pageSize) {
+//          Sort sort = new Sort(Sort.Direction.ASC, "id");
+          Pageable pageable = PageRequest.of(pageNum, pageSize);
+          Page<Product> products = productsService.getAllProductsList(pageable);
+          System.out.println("total page:" + products.getTotalPages());
+          System.out.println("current Page：" + pageNum);
+          model.addAttribute("products", products);
+          return "index";
     }
 
     @GetMapping("/{id}")

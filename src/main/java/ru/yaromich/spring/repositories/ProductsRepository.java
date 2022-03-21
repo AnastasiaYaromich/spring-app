@@ -13,6 +13,5 @@ import java.util.List;
 
 @Repository
 public interface ProductsRepository extends PagingAndSortingRepository<Product, Long> {
-    List<Product> findAll();
     Product findOneById(Long id);
 }

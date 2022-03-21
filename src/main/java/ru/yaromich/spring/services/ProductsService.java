@@ -22,8 +22,8 @@ public class ProductsService {
 
     public ProductsService() {}
 
-    public List<Product> getAllProductsList() {
-        return (List<Product>)productsRepository.findAll();
+    public Page<Product> getAllProductsList(Pageable pageable) {
+        return (Page<Product>)productsRepository.findAll(pageable);
     }
 
     public void addProduct(Product p, long idByCategoryName, long idByProducerName) {
