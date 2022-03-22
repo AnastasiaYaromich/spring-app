@@ -38,10 +38,14 @@ public class ProductsController {
     @Autowired
     public void setProducersService(ProducersService producersService) { this.producersService = producersService; }
 
-    @GetMapping()
+    @RequestMapping()
+    public String showHomePage() {
+        return "home";
+    }
+
+    @GetMapping("/list")
     public String productsList(Model model, @RequestParam(value = "pageNum", defaultValue = "0") int pageNum,
                                @RequestParam(value = "pageSize", defaultValue = "8") int pageSize) {
-//          Sort sort = new Sort(Sort.Direction.ASC, "id");
           Pageable pageable = PageRequest.of(pageNum, pageSize);
           Page<Product> products = productsService.getAllProductsList(pageable);
           System.out.println("total page:" + products.getTotalPages());
@@ -71,14 +75,14 @@ public class ProductsController {
        Long idByCategoryName = productsService.getIdByCategoryName(product.getCategory().getName(), categoriesService.getAllCategoriesList());
        Long idByProducerName = productsService.getIdByProducerName(product.getProducer().getName(), producersService.getAllProducersList());
        productsService.update(id, product, idByCategoryName, idByProducerName);
-        return "redirect:/products";
+        return "redirect:/products/list";
     }
 
 
     @GetMapping("/remove/{id}")
     public String delete(@PathVariable("id") Long id) {
         productsService.delete(id);
-        return "redirect:/products";
+        return "redirect:/products/list";
     }
 
     @GetMapping("/add")
@@ -91,6 +95,6 @@ public class ProductsController {
         Long idByCategoryName = productsService.getIdByCategoryName(product.getCategory().getName(), categoriesService.getAllCategoriesList());
         Long idByProducerName = productsService.getIdByProducerName(product.getProducer().getName(), producersService.getAllProducersList());
         productsService.addProduct(product, idByCategoryName, idByProducerName);
-        return "redirect:/products";
+        return "redirect:/products/list";
     }
 }

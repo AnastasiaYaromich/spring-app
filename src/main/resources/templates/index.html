@@ -34,22 +34,26 @@
 </div>
 </div>
 
-        <div>
-            <ul>
-                <li>
-                    <a th:href="'/store/products/?pageNum=0'">1</a>
-                </li>
-                <li th:if="${products.hasPrevious()}">
-                    <a th:href="'/store/products/?pageNum=' + ${products.previousPageable().getPageNumber()}" th:text="Previous"></a></li>
-                <li th:if="${products.hasNext()}">
-                    <a th:href="'/store/products/?pageNum=' + ${products.nextPageable().getPageNumber()}" th:text="Next"></a>
-                </li>
-                <li>
-                    <a th:href="'/store/products/?pageNum=' + ${products.getTotalPages() - 1}">Last</a>
-                </li>
+        <div class="pag">
+            <nav aria-label="...">
+            <ul class="pagination pagination-sm">
+                <li class="page-item"><a class="page-link" th:href="'/store/products/list/?pageNum=0'" >1</a></li>
+                <li class="page-item"><a class="page-link" th:href="'/store/products/list/?pageNum=1'" >2</a></li>
+                <li class="page-item"><a class="page-link" th:href="'/store/products/list/?pageNum=2'" >3</a></li>
             </ul>
+            </nav>
         </div>
-
     </div>
+
+<!--<div class="footer">-->
+<!--    <hr>-->
+<!--    <div class="container">-->
+<!--        <div class="footer__bottom">-->
+<!--            <div class="footer__copy">-->
+<!--                <p class="text foot footer__copy-text">&copy; All right reserved 2022</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>

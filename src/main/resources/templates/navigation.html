@@ -29,18 +29,37 @@
                 </li>
 
                 <li class="nav-item" th:classappend="${activeTab == 'products' ? 'active' : ''}">
-                    <a class="nav-link" th:href="@{/products}">All Products</a>
+                    <a class="nav-link" th:href="@{/products/list}">All Products</a>
                 </li>
 
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item" th:classappend="${activeTab == 'addProduct' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/products/add}">Add Product</a>
                 </li>
 
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="POST">
+                            <input type="submit" class="btn " value="Logout"/>
+                        </form>
+                    </li>
+                </div>
+
             </ul>
         </div>
     </nav>
     <div class="visible-md" style="height:80px;"></div>
 </div>
+
+<!--<div class="footer">-->
+<!--    <hr>-->
+<!--    <div class="container">-->
+<!--        <div class="footer__bottom">-->
+<!--            <div class="footer__copy">-->
+<!--                <p class="text foot footer__copy-text">&copy; All right reserved 2022</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 </body>
 </html>
