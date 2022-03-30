@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Product</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/dist/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/product_info.css}"/>
+</head>
+
+<html>
+<body>
+
+<div th:replace="~{navigation :: navi(addProduct)}" />
+<form class="updateProductForm information" th:method="PATCH"  th:action="@{/products/create}" th:object="${product}" >
+    <legend class="heading">Add New Product Form</legend>
+    <div class="mb-3">
+        <label for="brand" class="form-label text">Бренд:</label>
+        <input  type="text" th:field="*{brand}" class="form-control" id="brand">
+    </div>
+    </br>
+    <div class="mb-3">
+        <label  for="price" class="form-label text">Цена: </label>
+        <input type="text" th:field="*{price}" class="form-control"  id="price">
+    </div>
+    </br>
+    <div class="mb-3">
+        <label  for="view" class="form-label text">Изображение: </label>
+        <input type="text" th:field="*{view}" class="form-control" id="view">
+    </div>
+    </br>
+    <div class="mb-3">
+        <label for="description" class="form-label text">Описание: </label>
+        <input type="text" th:field="*{description}" class="form-control"  id="description">
+    </div>
+    </br>
+
+    <div class="mb-3">
+        <label for="composition" class="form-label text">Состав: </label>
+        <textarea rows="10" type="text" th:field= "*{composition}"  class="form-control heightComposition"  id="composition"></textarea>
+    </div>
+
+    </br>
+
+    <div class="mb-3">
+        <label for="category" class="form-label text">Категория: </label>
+        <input type="text" th:field="*{category.name}" class="form-control"  id="category">
+    </div>
+
+    </br>
+
+
+    <div class="mb-3">
+        <label for="producer" class="form-label text">Изготовитель: </label>
+        <input type="text" th:field="*{producer.name}" class="form-control"  id="producer">
+    </div>
+    </br>
+
+
+    <div class="mb-3">
+        <label for="bigview" class="form-label text">Большое изображение: </label>
+        <input type="text" th:field="*{bigview}" class="form-control" id="bigview">
+    </div>
+
+    </br>
+    <input class="updateButton" type="submit" value="Add">
+</form>
+
+<!--<div class="footer">-->
+<!--    <hr>-->
+<!--    <div class="container">-->
+<!--        <div class="footer__bottom">-->
+<!--            <div class="footer__copy">-->
+<!--                <p class="text foot footer__copy-text">&copy; All right reserved 2022</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+</body>
+
+</html>
