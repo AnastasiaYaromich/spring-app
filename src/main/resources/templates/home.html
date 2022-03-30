@@ -19,18 +19,18 @@
 <div th:replace="~{navigation :: navi(products)}" />
 
 <div class="container">
-    <h1>Welcome page</h1>
+    <h1 class="heading-admin">Welcome page</h1>
 
     <div sec:authorize="isAuthenticated()">
-        Authenticated username:
-        <div sec:authentication="principal.username"></div>
-        Authenticated user roles:
-        <div sec:authentication="principal.authorities"></div>
+        <p class="text">Authenticated username:</p>
+        <div class="text" sec:authentication="principal.username"></div>
+        <p class="text">Authenticated user roles:</p>
+        <div class="text" sec:authentication="principal.authorities"></div>
     </div>
 
     <!--<div sec:authorize access="hasAnyRole('ADMIN', 'USER')">-->
     <div sec:authorize="hasRole('ADMIN')">
-        This content will only be visible to users who have the "supervisor" authority in their list of <tt>GrantedAuthority</tt>s.
+        <p class="text">This content will only be visible to users who have the "supervisor" authority in their list of <tt>GrantedAuthority</tt>s.<p>
     </div>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

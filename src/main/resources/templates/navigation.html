@@ -39,13 +39,19 @@
                 <div sec:authorize="isAuthenticated()">
                     <li class="nav-item">
                         <form th:action="@{/logout}" method="POST">
-                            <input type="submit" class="btn " value="Logout"/>
+                            <input type="submit" class="btn" value="Logout"/>
                         </form>
                     </li>
                 </div>
-
             </ul>
         </div>
+        <form class="d-flex">
+            <ul class="navbar-nav">
+            <li  th:classappend="${activeTab == 'cart' ? 'active' : ''}">
+                <a class="cart-link" th:href="@{/cart}"> <img th:src="@{/images/cart.png}"/></a>
+                                </li>
+            </ul>
+        </form>
     </nav>
     <div class="visible-md" style="height:80px;"></div>
 </div>

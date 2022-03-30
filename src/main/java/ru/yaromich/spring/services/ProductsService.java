@@ -5,17 +5,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import ru.yaromich.spring.entities.Cart;
 import ru.yaromich.spring.entities.Category;
 import ru.yaromich.spring.entities.Producer;
 import ru.yaromich.spring.entities.Product;
 import ru.yaromich.spring.repositories.ProductsRepository;
+import ru.yaromich.spring.repositories.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProductsService {
     private ProductsRepository productsRepository;
+
 
     @Autowired
     public void setProductsRepository(ProductsRepository productsRepository) {this.productsRepository = productsRepository;}
@@ -43,6 +47,14 @@ public class ProductsService {
 
     public Category getCategoryByProductId(Long id) {
         return productsRepository.findOneById(id).getCategory();
+    }
+
+    public List<Product> findProductsListByCart(List<Cart> carts) {
+        List<Product> products = new ArrayList<>();
+        for (Cart c: carts) {
+            products.add(productsRepository.findOneById(c.getProduct().getId()));
+        }
+        return products;
     }
 
     public Long getIdByCategoryName(String name, List<Category> categories) {

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -28,7 +29,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         System.out.println("\n\nIn customAuthenticationSuccessHandler\n\n");
         String userName = authentication.getName();
         System.out.println("userName=" + userName);
-        User theUser = userService.findByUserName(userName);
+        Optional<User> theUser = userService.findByUserName(userName);
         HttpSession session = request.getSession();
         session.setAttribute("user", theUser);
         response.sendRedirect(request.getContextPath() + "/");

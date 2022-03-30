@@ -31,6 +31,7 @@
                 <h6 class="heading-cost" th:text="${product.getPrice()}">Value</h6>
 
         <a class="showProductById" th:href="@{'/products/' + ${product.id}}">Подробнее</a>
+        <a class="addProductToCartById" th:href="@{'/cart/' + ${product.id}}">В корзину</a>
 </div>
 </div>
 
